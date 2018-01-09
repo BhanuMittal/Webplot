@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>Webplot</title>
+	<link rel="stylesheet" type="text/css" href="script.calc.css" />
+	<script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="underscore-min.js"></script>
+    <script type="text/javascript" src="math.min.js"></script>
+	<script type="text/javascript" src="main.calc.js"></script>
+	<script type="text/javascript" src="script.calc.js"></script>
+	<script type="text/javascript" src="script.ui.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+<div id="hideSidebar"><a href="javascript:void(0)" onclick="script_ui.hideGraphSidebar()">&raquo;</a></div>
+<div id="showSidebar"><a href="javascript:void(0)" onclick="script_ui.showGraphSidebar()">&laquo;</a></div>
+<div id="toolbar">
+	<div id="toolkit_select">
+		<a href="javascript:void(0)" onclick="script_ui.setGraphTool('pointer')" id="toolkit_select_pointer" class="toolbar_option toolbar_selected">
+		<img src="images/pointer.png" alt="Pointer" title="Pointer"/></a>
+		<a href="javascript:void(0)" onclick="script_ui.setGraphTool('trace')" id="toolkit_select_trace" class="toolbar_option">
+		<img src="images/trace.png" alt="Trace" title="Trace"/></a>
+		<a href="javascript:void(0)" onclick="script_ui.setGraphTool('intersect')" id="toolkit_select_intersect" class="toolbar_option">
+		<img src="images/intersect.png" alt="Intersect" title="Intersect"/></a>
+        <a href="javascript:void(0)" onclick="script_ui.setGraphTool('derivative')" id="toolkit_select_derivative" class="toolbar_option">
+		<img src="images/derivative.png" alt="Derivative" title="Derivative"/></a>
+
+		<a href="javascript:void(0)" onclick="script_ui.setGraphTool('zoombox')" id="toolkit_select_zoombox" class="toolbar_option">
+		<img src="images/zoombox.png" alt="Reset" title="Reset"/></a>
+		<a href="javascript:void(0)" onclick="script_ui.setGraphTool('zoomin')" id="toolkit_select_zoomin" class="toolbar_option">
+		<img src="images/zoomin.png" alt="Zoom In" title="Zoom In"/></a>
+		<a href="javascript:void(0)" onclick="script_ui.setGraphTool('zoomout')" id="toolkit_select_zoomout" class="toolbar_option">
+		<img src="images/zoomout.png" alt="Zoom Out" title="Zoom Out"/></a>
+	</div>
+</div>
+
+<div id="gr_toolkites">
+	<div class="gr_toolkit" id="gr_toolkit_zoombox">
+		<div class="gr_toolkit_header">
+			<div class="gr_toolkit_close"><a href="javascript: void(0)">close</a></div>
+			Window Options
+		</div>
+		
+		<div class="gr_toolkit_main">
+			
+			<a href="javascript: void(0);" onclick="script_calc.graphResetZoom()">Reset View</a>
+		</div>
+	</div>
+	
+	<div class="gr_toolkit" id="gr_toolkit_trace">
+		<div class="gr_toolkit_header">
+			<div class="gr_toolkit_close"><a href="javascript: void(0)">close</a></div>
+			Trace
+		</div>
+		
+		<div class="gr_toolkit_main">
+			x: <input id="gr_toolkit_trace_input" class="script_calc_trace_input" type="text" size="20" style="width: 95%" /><br />
+			y: <input id="gr_toolkit_trace_output" class="script_calc_trace_output" type="text" size="20" style="width: 95%" /><br /><br />
+			
+			<a class="fancybutton" href="javascript: void(0)" onclick="script_ui.doTrace($('#gr_toolkit_trace_input').val())">Trace</a><br />
+		</div>
+	</div>
+</div>
+
+<div id="sidewrapper">
+	<div id="graph_sidebar">
+		<h1 style="font-family: Lato, Arial, sans-serif; font-style: italic; font-size: 28pt; color: #3d94f6; text-shadow: 1px 1px #FFF ">Webplot</h1>
+		<span style="font-size: 90%; position: relative; bottom: 4px;"><em>Web-Enabled Graphing Calculator</em>
+		</span><br /><br />
+
+		<div id="graph_inputs">
+			
+		</div>
+		<br />
+		<div id="buttonbar">
+			<a class="fancybutton" href="javascript:void(0)" onclick="script_ui.evaluate()">Evaluate</a>
+			<a class="fancybutton" href="javascript:void(0)" onclick="script_ui.addGraphInput()">+</a>
+			<a class="fancybutton greybutton" href="javascript:void(0)" id="settings_button" onclick="$('#settings').toggle(400)"><img src='images/settings.png' alt='Settings' /></a><br /><br />
+		</div>
+
+		<div id="settings">
+	
+			<div id="gridlines_select" class="options_list">
+				Gridlines:
+				<a href="javascript:void(0)" onclick="script_ui.setGraphGridlines('normal')" id="gridlines_select_normal" class="option option_selected">NORMAL</a>
+				<a href="javascript:void(0)" onclick="script_ui.setGraphGridlines('less')" id="gridlines_select_less" class="option">LESS</a>
+				<a href="javascript:void(0)" onclick="script_ui.setGraphGridlines('off')" id="gridlines_select_off" class="option">OFF</a>
+			</div>
+	
+			
+		</div>
+		
+		
+	</div>
+</div>
+
+<div id="graph_wrapper">
+	<canvas id="graph">Sorry, your browser does not support this application. The following browsers are supported:<br /><br />
+	<a href="http://www.google.com/chrome/">Google Chrome</a><br /><a href="http://www.mozilla.com/firefox/">Mozilla Firefox</a><br />
+	<a href="http://www.opera.com/">Opera</a></canvas>
+</div>
+
+</div>
+
+</body>
+
+</html>
